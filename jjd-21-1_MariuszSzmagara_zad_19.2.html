@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<script>
+  function validationPassword() {
+    var password = document.getElementById("password").value
+
+    //at least eight characters password length validation  
+    if(password.length < 8) {  
+      document.getElementById("messageTooShort").innerHTML = "Za krótkie hasło. Min. 8 znaków!" 
+    } 
+      
+    // at least one lowercase password validation
+    if(!(/[a-z]/.test(password))) {  
+      document.getElementById("messageAtLeastOneLowercase").innerHTML = "Min. 1 mała litera!" 
+    }
+      
+    // at least one uppercase password validation
+    if(!(/[A-Z]/.test(password))) { 
+      document.getElementById("messageAtLeastOneUppercase") = "Min. 1 duża litera!"
+    }
+      
+    // at least one special character password validation
+    if(!(/[@#$%^&+=]/.test(password))) {
+      document.getElementById("messageAtLeastOneSpecialCharacter").innerHTML = "Min. 1 znak specjalny!"
+    }
+  }
+
+
+function matchPassword() {  
+  var inputPassword1 = document.getElementById("password")  
+  var inputPassword2 = document.getElementById("confirmPassword")  
+  if(pw1 != pw2)  
+  {   
+      document.getElementById("confirmPasswordMessage").innerHTML = "Hasła różnią się od siebie!"
+      return false;
+  } else {  
+      document.getElementById("confirmPasswordMessage").innerHTML = "Hasło zostało utworzone pomyślnie" 
+  }  
+} 
+</script>
+<body class="mx-5">
+  <center>
+    <form class="form-inline">
+      <div class="form-group col-md-2">
+        <label for="password">Hasło</label>
+        <input type="password" id="password" class="form-control" onkeyup="validationPassword()">
+        <ul>
+          <li id="messageTooShort"></li>
+          <li id="messageAtLeastOneLowercase"></li>
+          <li id="messageAtLeastOneUppercase"></li>
+          <li id="messageAtLeastOneSpecialCharacter"></li>
+        </ul>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="confirmPasword">Powtórz hasło</label>
+        <input type="password" id="confirmPasword" class="form-control" onkeyup="matchPassword()" >
+        <span id = "confirmPasswordMessage" style="color:red" aria-autocomplete="list"> </span> <br><br>  
+      </div>
+    </form>
+  </center>
+</body>
+</html>
